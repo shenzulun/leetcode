@@ -3,6 +3,10 @@ package org.magen.oj.leetcode.easy.s2;
 /**
  * add a field to store the diff of top*2 and minValue
  *
+ *  <pre>
+Input:	push(2147483646),push(2147483646),push(2147483647),top,pop,getMin,pop,getMin,pop,push(2147483647),top,getMin,push(-2147483648),top,getMin,pop,getMin
+Expected:	[2147483647,2147483646,2147483646,2147483647,2147483647,-2147483648,-2147483648,2147483647]
+	</pre>
  * @date Nov 12, 2014
  * @author shenzl
  *
@@ -54,7 +58,7 @@ public class MinStackSolution2 {
 	}
 	
 	public void pop(){
-		if(size < 1){
+		if(size < 0){
 			throw new IllegalArgumentException("empty stack");
 		}
 		int top = Integer.valueOf(String.valueOf(elementData[size - 1])).intValue();
@@ -67,7 +71,7 @@ public class MinStackSolution2 {
 	}
 	
 	public int top(){
-		if(size < 1){
+		if(size < 0){
 			throw new IllegalArgumentException("empty stack");
 		}
 		Object old = elementData[size - 1];
@@ -76,7 +80,7 @@ public class MinStackSolution2 {
 	}
 	
 	public int getMin(){
-		if(size < 1){
+		if(size < 0){
 			throw new IllegalArgumentException("empty stack");
 		}	
 		return min;
